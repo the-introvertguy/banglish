@@ -1,0 +1,465 @@
+// ============================================================
+// BanglishScript Comprehensive Feature Demonstration
+// ============================================================
+// This file intentionally demonstrates the language syntax,
+// data types, operators, control flow, functions, closures,
+// arrays, maps, built-ins, mutation, and type conversion.
+//
+// Interactive input examples are kept at the bottom in comments
+// so running this file never blocks waiting for stdin.
+// ============================================================
+
+// ------------------------------------------------------------
+// 1. VARIABLES, CONSTANTS, AND BASIC DATA TYPES
+// ------------------------------------------------------------
+
+dhoro name = "Rahim";
+dhoro age = 22;
+dhoro height = 5.75;
+dhoro student = shotto;
+dhoro absent = mitha;
+dhoro nothing = kichu_na;
+
+sthir PI = 3.14159;
+sthir LANGUAGE = "BanglishScript";
+
+dekhao("Name:", name);
+dekhao("Age:", age);
+dekhao("Height:", height);
+dekhao("Student:", student);
+dekhao("Absent:", absent);
+dekhao("Nothing:", nothing);
+dekhao("PI:", PI);
+dekhao("Language:", LANGUAGE);
+
+// Mutable variables and compound assignment.
+dhoro score = 10;
+score += 5;
+score -= 3;
+dekhao("Score after += and -=:", score);
+
+// ------------------------------------------------------------
+// 2. STRINGS AND ESCAPES
+// ------------------------------------------------------------
+
+dhoro city = "Dhaka";
+dhoro message = "Hello\nBanglishScript\tWorld!";
+
+dekhao("City:", city);
+dekhao(message);
+
+dekhao("String concatenation:", "Age: " + age);
+dekhao("Combined:", "Hello, " + name + " from " + city);
+
+// ------------------------------------------------------------
+// 3. ARITHMETIC OPERATORS
+// ------------------------------------------------------------
+
+dhoro a = 20;
+dhoro b = 6;
+
+dekhao("a + b =", a + b);
+dekhao("a - b =", a - b);
+dekhao("a * b =", a * b);
+dekhao("a / b =", a / b);
+dekhao("a % b =", a % b);
+dekhao("Unary minus =", -a);
+
+// Operator precedence: multiplication before addition.
+dhoro precedence = 10 + 2 * 3;
+dekhao("10 + 2 * 3 =", precedence);
+
+// ------------------------------------------------------------
+// 4. COMPARISON AND LOGICAL OPERATORS
+// ------------------------------------------------------------
+
+dekhao("a == b:", a == b);
+dekhao("a != b:", a != b);
+dekhao("a < b:", a < b);
+dekhao("a <= b:", a <= b);
+dekhao("a > b:", a > b);
+dekhao("a >= b:", a >= b);
+
+dhoro is_adult = age >= 18;
+dhoro is_student = student;
+
+dekhao("adult AND student:", is_adult ebong is_student);
+dekhao("adult OR absent:", is_adult othoba absent);
+dekhao("NOT absent:", noi absent);
+
+// ------------------------------------------------------------
+// 5. IF / ELSE IF / ELSE
+// ------------------------------------------------------------
+
+dhoro grade = 85;
+
+jodi (grade >= 90) {
+    dekhao("Grade: Excellent");
+} nahole_jodi (grade >= 80) {
+    dekhao("Grade: Good");
+} nahole_jodi (grade >= 60) {
+    dekhao("Grade: Average");
+} nahole {
+    dekhao("Grade: Needs Improvement");
+}
+
+// Nested condition.
+jodi (is_adult ebong is_student) {
+    dekhao(name, "is an adult student.");
+} nahole {
+    dekhao(name, "does not match both conditions.");
+}
+
+// ------------------------------------------------------------
+// 6. WHILE LOOP
+// ------------------------------------------------------------
+
+dhoro i = 0;
+dhoro while_sum = 0;
+
+jotokhon (i < 5) {
+    while_sum = while_sum + i;
+    dekhao("while i =", i);
+    i = i + 1;
+}
+
+dekhao("while sum:", while_sum);
+
+// ------------------------------------------------------------
+// 7. FOR LOOP
+// ------------------------------------------------------------
+
+dhoro for_sum = 0;
+
+ghuro dhoro j = 0; j < 5; j = j + 1 {
+    for_sum = for_sum + j;
+}
+
+dekhao("for sum:", for_sum);
+
+// ------------------------------------------------------------
+// 8. BREAK AND CONTINUE
+// ------------------------------------------------------------
+
+// Continue skips odd numbers; break stops at 8.
+ghuro dhoro k = 0; k < 12; k = k + 1 {
+    jodi (k == 8) {
+        thamok;
+    }
+
+    jodi (noi (k % 2 == 0)) {
+        chaliye_jao;
+    }
+
+    dekhao("even:", k);
+}
+
+// ------------------------------------------------------------
+// 9. FUNCTIONS AND RETURN VALUES
+// ------------------------------------------------------------
+
+kaj jog(x, y) {
+    ferot x + y;
+}
+
+kaj square(x) {
+    ferot x * x;
+}
+
+dekhao("3 + 4 =", jog(3, 4));
+dekhao("square(9) =", square(9));
+
+// Function without an explicit return.
+kaj say_hello() {
+    dekhao("Hello from a function!");
+}
+
+say_hello();
+
+// ------------------------------------------------------------
+// 10. RECURSION
+// ------------------------------------------------------------
+
+kaj factorial(n) {
+    jodi (n <= 1) {
+        ferot 1;
+    } nahole {
+        ferot n * factorial(n - 1);
+    }
+}
+
+kaj fibonacci(n) {
+    jodi (n < 2) {
+        ferot n;
+    }
+
+    ferot fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+dekhao("factorial(5):", factorial(5));
+dekhao("fibonacci(8):", fibonacci(8));
+
+// ------------------------------------------------------------
+// 11. FIRST-CLASS / ANONYMOUS FUNCTIONS
+// ------------------------------------------------------------
+
+// Anonymous function stored in a variable.
+dhoro double = kaj(x) {
+    ferot x * 2;
+};
+
+dhoro triple = kaj(x) {
+    ferot x * 3;
+};
+
+dekhao("double(7):", double(7));
+dekhao("triple(7):", triple(7));
+
+// ------------------------------------------------------------
+// 12. CLOSURES
+// ------------------------------------------------------------
+
+kaj make_counter(start) {
+    dhoro count = start;
+
+    ferot kaj() {
+        count = count + 1;
+        ferot count;
+    };
+}
+
+dhoro counter = make_counter(0);
+
+dekhao("counter:", counter());
+dekhao("counter:", counter());
+dekhao("counter:", counter());
+
+// ------------------------------------------------------------
+// 13. ARRAYS
+// ------------------------------------------------------------
+
+dhoro numbers = [42, 7, 19, 3, 11];
+dekhao("numbers:", numbers);
+dekhao("numbers[0]:", numbers[0]);
+
+// Index assignment.
+numbers[0] = 100;
+dekhao("after numbers[0] = 100:", numbers);
+
+// Negative index.
+dekhao("last element:", numbers[-1]);
+
+// Nested and heterogeneous arrays.
+dhoro mixed = [1, "two", 3.0, shotto, kichu_na];
+dhoro grid = [[1, 2], [3, 4], [5, 6]];
+
+dekhao("mixed:", mixed);
+dekhao("grid[0][1]:", grid[0][1]);
+
+// ------------------------------------------------------------
+// 14. MAPS / DICTIONARIES
+// ------------------------------------------------------------
+
+dhoro person = {
+    "naam": "Rahim",
+    "bhoysh": 22,
+    "city": "Dhaka"
+};
+
+dekhao("person:", person);
+dekhao("person[\"naam\"]:", person["naam"]);
+dekhao("person.naam:", person.naam);
+
+// Add/update a map key.
+person["country"] = "Bangladesh";
+person["bhoysh"] = 23;
+
+dekhao("updated person:", person);
+dekhao("country:", person.country);
+
+// Nested maps and arrays inside maps.
+dhoro student_info = {
+    "naam": "Karim",
+    "grades": [90, 85, 78],
+    "address": {
+        "city": "Dhaka",
+        "zip": "1207"
+    }
+};
+
+dekhao("student name:", student_info["naam"]);
+dekhao("first grade:", student_info["grades"][0]);
+dekhao("nested city:", student_info["address"]["city"]);
+
+// ------------------------------------------------------------
+// 15. STANDARD LIBRARY: LENGTH
+// ------------------------------------------------------------
+
+dekhao("length of city:", doirgho(city));
+dekhao("length of numbers:", doirgho(numbers));
+dekhao("length of person map:", doirgho(person));
+
+// ------------------------------------------------------------
+// 16. ARRAY MUTATION: PUSH / POP
+// ------------------------------------------------------------
+
+dhoro values = [5, 3, 9, 1];
+
+shesh_jog(values, 100);
+dekhao("after shesh_jog:", values);
+
+dhoro removed = shesh_bad(values);
+dekhao("shesh_bad returned:", removed);
+dekhao("after shesh_bad:", values);
+
+// ------------------------------------------------------------
+// 17. SORT / REVERSE / FIND / SLICE / FILL
+// ------------------------------------------------------------
+
+sajao(values);
+dekhao("sorted:", values);
+
+ultho(values);
+dekhao("reversed:", values);
+
+dekhao("find 5:", khojo(values, 5));
+dekhao("find 999:", khojo(values, 999));
+
+dekhao("slice [1:3]:", kato(values, 1, 3));
+
+dhoro filled = [];
+bhoro(filled, 7, 5);
+dekhao("filled:", filled);
+
+// ------------------------------------------------------------
+// 18. STRING USE OF LIBRARY FUNCTIONS
+// ------------------------------------------------------------
+
+dhoro text = "BanglishScript";
+
+dekhao("text length:", doirgho(text));
+dekhao("reversed text:", ultho(text));
+dekhao("text slice:", kato(text, 0, 8));
+dekhao("find Script:", khojo(text, "Script"));
+
+// ------------------------------------------------------------
+// 19. TYPE CONVERSION
+// ------------------------------------------------------------
+
+dhoro numeric_text = "42";
+dhoro converted_number = shonkhya(numeric_text);
+
+dekhao("shonkhya(\"42\") + 8:", converted_number + 8);
+dekhao("shobdo(42):", shobdo(42));
+dekhao("shobdo(shotto):", shobdo(shotto));
+dekhao("shobdo(kichu_na):", shobdo(kichu_na));
+
+// ------------------------------------------------------------
+// 20. FUNCTIONS AS ARGUMENTS / RETURNED VALUES
+// ------------------------------------------------------------
+
+kaj apply_twice(fn, value) {
+    ferot fn(fn(value));
+}
+
+dhoro add_ten = kaj(x) {
+    ferot x + 10;
+};
+
+dekhao("apply_twice(add_ten, 5):", apply_twice(add_ten, 5));
+
+kaj make_multiplier(factor) {
+    ferot kaj(x) {
+        ferot x * factor;
+    };
+}
+
+dhoro times5 = make_multiplier(5);
+dekhao("times5(6):", times5(6));
+
+// ------------------------------------------------------------
+// 21. BLOCK SCOPING
+// ------------------------------------------------------------
+
+{
+    dhoro local_value = "inside block";
+    dekhao(local_value);
+}
+
+// local_value is intentionally not referenced here because it
+// is block-scoped.
+
+// ------------------------------------------------------------
+// 22. NESTED CONTROL FLOW + COLLECTION PROCESSING
+// ------------------------------------------------------------
+
+dhoro scores = [78, 92, 85, 61, 99];
+dhoro excellent = 0;
+dhoro passing = 0;
+
+ghuro dhoro p = 0; p < doirgho(scores); p = p + 1 {
+    dhoro current = scores[p];
+
+    jodi (current >= 90) {
+        excellent = excellent + 1;
+    } nahole_jodi (current >= 60) {
+        passing = passing + 1;
+    }
+}
+
+dekhao("excellent scores:", excellent);
+dekhao("passing scores:", passing);
+
+// ------------------------------------------------------------
+// 23. A SMALL COMPLETE PROGRAM-STYLE EXAMPLE
+// ------------------------------------------------------------
+
+kaj classify(score) {
+    jodi (score >= 90) {
+        ferot "Excellent";
+    } nahole_jodi (score >= 80) {
+        ferot "Good";
+    } nahole_jodi (score >= 60) {
+        ferot "Average";
+    } nahole {
+        ferot "Needs Improvement";
+    }
+}
+
+dhoro students = [
+    {"naam": "Rahim", "score": 78},
+    {"naam": "Karim", "score": 92},
+    {"naam": "Salma", "score": 85}
+];
+
+ghuro dhoro s = 0; s < doirgho(students); s = s + 1 {
+    dhoro current_student = students[s];
+    dekhao(
+        current_student["naam"],
+        "->",
+        classify(current_student["score"])
+    );
+}
+
+// ------------------------------------------------------------
+// 24. INTERACTIVE INPUT API
+// ------------------------------------------------------------
+// Uncomment these lines to test stdin support manually.
+// They are commented out so this comprehensive demo runs without
+// waiting for user input.
+//
+// dekhao("What is your name?");
+// dhoro input_name = shono();
+// dekhao("Hello", input_name);
+//
+// dekhao("Enter your age:");
+// dhoro input_age = shono_shonkhya();
+// dekhao("Next year:", input_age + 1);
+
+// ------------------------------------------------------------
+// END OF COMPREHENSIVE DEMO
+// ------------------------------------------------------------
+
+dekhao("====================================");
+dekhao("BanglishScript demo completed!");
+dekhao("====================================");

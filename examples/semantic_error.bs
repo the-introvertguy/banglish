@@ -1,0 +1,6 @@
+dhoro x = 10;
+sthir y = 20;
+y = 30;
+z = x + 1;
+thamok;
+ferot 5;

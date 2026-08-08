@@ -1,0 +1,3 @@
+dhoro x = 10
+jodi (x > 2) {
+    dekhao(x);
